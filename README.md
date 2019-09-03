@@ -1,4 +1,4 @@
-#所用到的依赖库:
+# 所用到的依赖库:
 //rxjava引入的包
 implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
