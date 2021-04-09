@@ -5,51 +5,90 @@ import java.util.List;
 public class PhotoBean {
 
     /**
-     * error : false
-     * results : [{"_id":"5ccdbc219d212239df927a93","createdAt":"2019-05-04T16:21:53.523Z","desc":"2019-05-05","publishedAt":"2019-05-04T16:21:59.733Z","source":"web","type":"福利","url":"http://ww1.sinaimg.cn/large/0065oQSqly1g2pquqlp0nj30n00yiq8u.jpg","used":true,"who":"lijinshanmx"},{"_id":"5cc43919fc3326376038d233","createdAt":"2019-04-27T19:12:25.536Z","desc":"2019-04-27","publishedAt":"2019-04-27T19:12:51.865Z","source":"web","type":"福利","url":"https://ww1.sinaimg.cn/large/0065oQSqly1g2hekfwnd7j30sg0x4djy.jpg","used":true,"who":"lijinshanmx"},{"_id":"5c6a4ae99d212226776d3256","createdAt":"2019-02-18T06:04:25.571Z","desc":"2019-02-18","publishedAt":"2019-04-10T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1g0ajj4h6ndj30sg11xdmj.jpg","used":true,"who":"lijinshanmx"},{"_id":"5c2dabdb9d21226e068debf9","createdAt":"2019-01-03T06:29:47.895Z","desc":"2019-01-03","publishedAt":"2019-01-03T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg","used":true,"who":"lijinshanmx"},{"_id":"5c25db189d21221e8ada8664","createdAt":"2018-12-28T08:13:12.688Z","desc":"2018-12-28","publishedAt":"2018-12-28T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fymj13tnjmj30r60zf79k.jpg","used":true,"who":"lijinshanmx"},{"_id":"5c12216d9d21223f5a2baea2","createdAt":"2018-12-13T09:07:57.2Z","desc":"2018-12-13","publishedAt":"2018-12-13T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fy58bi1wlgj30sg10hguu.jpg","used":true,"who":"lijinshanmx"},{"_id":"5bfe1a5b9d2122309624cbb7","createdAt":"2018-11-28T04:32:27.338Z","desc":"2018-11-28","publishedAt":"2018-11-28T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg","used":true,"who":"lijinshanmx"},{"_id":"5bf22fd69d21223ddba8ca25","createdAt":"2018-11-19T03:36:54.950Z","desc":"2018-11-19","publishedAt":"2018-11-19T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg","used":true,"who":"lijinshanmx"},{"_id":"5be14edb9d21223dd50660f8","createdAt":"2018-11-06T08:20:43.656Z","desc":"2018-11-06","publishedAt":"2018-11-06T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg","used":true,"who":"lijinshanmx"},{"_id":"5bcd71979d21220315c663fc","createdAt":"2018-10-22T06:43:35.440Z","desc":"2018-10-22","publishedAt":"2018-10-22T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwgzx8n1syj30sg15h7ew.jpg","used":true,"who":"lijinshanmx"},{"_id":"5bc434ac9d212279160c4c9e","createdAt":"2018-10-15T06:33:16.497Z","desc":"2018-10-15","publishedAt":"2018-10-15T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fw8wzdua6rj30sg0yc7gp.jpg","used":true,"who":"lijinshanmx"},{"_id":"5bbb0de09d21226111b86f1c","createdAt":"2018-10-08T07:57:20.978Z","desc":"2018-10-08","publishedAt":"2018-10-08T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fw0vdlg6xcj30j60mzdk7.jpg","used":true,"who":"lijinshanmx"},{"_id":"5ba206ec9d2122610aba3440","createdAt":"2018-09-19T08:21:00.295Z","desc":"2018-09-19","publishedAt":"2018-09-19T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fvexaq313uj30qo0wldr4.jpg","used":true,"who":"lijinshanmx"},{"_id":"5b9771a29d212206c1b383d0","createdAt":"2018-09-11T07:41:22.491Z","desc":"2018-09-11","publishedAt":"2018-09-11T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fv5n6daacqj30sg10f1dw.jpg","used":true,"who":"lijinshanmx"},{"_id":"5b830bba9d2122031f86ee51","createdAt":"2018-08-27T04:21:14.703Z","desc":"2018-08-27","publishedAt":"2018-08-28T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fuo54a6p0uj30sg0zdqnf.jpg","used":true,"who":"lijinshanmx"},{"_id":"5b7b836c9d212201e982de6e","createdAt":"2018-08-21T11:13:48.989Z","desc":"2018-08-21","publishedAt":"2018-08-21T00:00:00.0Z","source":"web","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fuh5fsvlqcj30sg10onjk.jpg","used":true,"who":"lijinshanmx"},{"_id":"5b74e9409d21222c52ae4cb4","createdAt":"2018-08-16T11:02:24.289Z","desc":"2018-08-16","publishedAt":"2018-08-16T00:00:00.0Z","source":"api","type":"福利","url":"https://ws1.sinaimg.cn/large/0065oQSqly1fubd0blrbuj30ia0qp0yi.jpg","used":true,"who":"lijinshan"},{"_id":"5b7102749d2122341d563844","createdAt":"2018-08-13T12:00:52.458Z","desc":"2018-08-13","publishedAt":"2018-08-13T00:00:00.0Z","source":"api","type":"福利","url":"https://ww1.sinaimg.cn/large/0065oQSqly1fu7xueh1gbj30hs0uwtgb.jpg","used":true,"who":"lijinshan"},{"_id":"5b6bad449d21226f45755582","createdAt":"2018-08-09T10:56:04.962Z","desc":"2018-08-09","publishedAt":"2018-08-09T00:00:00.0Z","source":"web","type":"福利","url":"https://ww1.sinaimg.cn/large/0065oQSqgy1fu39hosiwoj30j60qyq96.jpg","used":true,"who":"lijinshanmx"},{"_id":"5b67b7fd9d2122195bdbd806","createdAt":"2018-08-06T10:52:45.809Z","desc":"2018-08-06","publishedAt":"2018-08-06T00:00:00.0Z","source":"api","type":"福利","url":"https://ww1.sinaimg.cn/large/0065oQSqly1ftzsj15hgvj30sg15hkbw.jpg","used":true,"who":"lijinshan"}]
+     * data : [{"_id":"5e959250808d6d2fe6b56eda","author":"鸢媛","category":"Girl","createdAt":"2020-05-25 08:00:00","desc":"与其安慰自己平凡可贵，\n不如拼尽全力活得漂亮。 \u200b \u200b\u200b\u200b\u200b","images":["http://gank.io/images/f4f6d68bf30147e1bdd4ddbc6ad7c2a2"],"likeCounts":7,"publishedAt":"2020-05-25 08:00:00","stars":1,"title":"第96期","type":"Girl","url":"http://gank.io/images/f4f6d68bf30147e1bdd4ddbc6ad7c2a2","views":14958},{"_id":"5e95923f808d6d2fe6b56ed8","author":"鸢媛","category":"Girl","createdAt":"2020-05-24 08:00:00","desc":"这世界总有人在笨拙地爱着你，想把全部的温柔都给你。 \u200b\u200b\u200b\u200b","images":["http://gank.io/images/dc75cbde1d98448183e2f9514b4d1320"],"likeCounts":4,"publishedAt":"2020-05-24 08:00:00","stars":1,"title":"第95期","type":"Girl","url":"http://gank.io/images/dc75cbde1d98448183e2f9514b4d1320","views":6437},{"_id":"5e95922e808d6d2fe6b56ed6","author":"鸢媛","category":"Girl","createdAt":"2020-05-23 08:00:00","desc":"陪伴本来就是这世界上最了不起的安慰\u200b。","images":["http://gank.io/images/6b2efa591564475fb8bc32291fb0007c"],"likeCounts":1,"publishedAt":"2020-05-23 08:00:00","stars":1,"title":"第94期","type":"Girl","url":"http://gank.io/images/6b2efa591564475fb8bc32291fb0007c","views":5687},{"_id":"5e959200ee6ba981da2af34d","author":"鸢媛","category":"Girl","createdAt":"2020-05-22 08:00:00","desc":"长不过执念，短不过善变。","images":["http://gank.io/images/d6bba8cf5b8c40f9ad229844475e9149"],"likeCounts":2,"publishedAt":"2020-05-22 08:00:00","stars":1,"title":"第93期","type":"Girl","url":"http://gank.io/images/d6bba8cf5b8c40f9ad229844475e9149","views":4552},{"_id":"5e9591dcee6ba981da2af34b","author":"鸢媛","category":"Girl","createdAt":"2020-05-21 08:00:00","desc":"无论多么艰难的现在，终会翻篇。\n朝未来大步向前吧，别丧，别止步。","images":["http://gank.io/images/9fa43020cf724c69842eec3e13f6d21c"],"likeCounts":4,"publishedAt":"2020-05-21 08:00:00","stars":1,"title":"第92期","type":"Girl","url":"http://gank.io/images/9fa43020cf724c69842eec3e13f6d21c","views":3005},{"_id":"5e9591c60bd5529b54e712af","author":"鸢媛","category":"Girl","createdAt":"2020-05-20 08:00:00","desc":"希望下一次，能喜欢上一个也喜欢自己的人 \u200b\u200b\u200b\u200b。","images":["http://gank.io/images/d237f507bf1946d2b0976e581f8aab9b"],"likeCounts":0,"publishedAt":"2020-05-20 08:00:00","stars":1,"title":"第91期","type":"Girl","url":"http://gank.io/images/d237f507bf1946d2b0976e581f8aab9b","views":2536},{"_id":"5e9591b6808d6d2fe6b56ed5","author":"鸢媛","category":"Girl","createdAt":"2020-05-19 08:00:00","desc":"这个世界上，\n有些人有多冷漠，\n有些人就有多温暖，\n希望你总会遇到那些温暖对你的人。","images":["http://gank.io/images/25d3e3db2c1248bb917c09dc4f50a46f"],"likeCounts":1,"publishedAt":"2020-05-19 08:00:00","stars":1,"title":"第90期","type":"Girl","url":"http://gank.io/images/25d3e3db2c1248bb917c09dc4f50a46f","views":3486},{"_id":"5e9591a2ee6ba981da2af34a","author":"鸢媛","category":"Girl","createdAt":"2020-05-18 08:00:00","desc":"以前对你的喜欢，\n是见你，念你，陪伴你。\n现在对你的喜欢，\n是不问，不看，不叨扰。","images":["http://gank.io/images/19c99c447e0a40a6b3ff89951957cfb1"],"likeCounts":0,"publishedAt":"2020-05-18 08:00:00","stars":1,"title":"第89期","type":"Girl","url":"http://gank.io/images/19c99c447e0a40a6b3ff89951957cfb1","views":2389},{"_id":"5e959197808d6d2fe6b56ed4","author":"鸢媛","category":"Girl","createdAt":"2020-05-17 08:00:00","desc":"只要结局是喜剧，过程你要我怎么哭都行，幸福可以来的慢一些，\n只要它是真的，如果最后能在一起，晚点我真的无所谓的。","images":["http://gank.io/images/f0c192e3e335400db8a709a07a891b2e"],"likeCounts":0,"publishedAt":"2020-05-17 08:00:00","stars":1,"title":"第88期","type":"Girl","url":"http://gank.io/images/f0c192e3e335400db8a709a07a891b2e","views":3341},{"_id":"5e95915f808d6d2fe6b56ed3","author":"鸢媛","category":"Girl","createdAt":"2020-05-16 08:00:00","desc":"若不是情深似海，思念又怎会泛滥成灾。","images":["http://gank.io/images/bdb35e4b3c0045c799cc7a494a3db3e0"],"likeCounts":3,"publishedAt":"2020-05-16 08:00:00","stars":1,"title":"第87期","type":"Girl","url":"http://gank.io/images/bdb35e4b3c0045c799cc7a494a3db3e0","views":4934}]
+     * page : 1
+     * page_count : 10
+     * status : 100
+     * total_counts : 96
      */
 
-    private boolean error;
-    private List<ResultsBean> results;
+    private int page;
+    private int page_count;
+    private int status;
+    private int total_counts;
+    private List<DataBean> data;
 
-    public boolean isError() {
-        return error;
+    public int getPage() {
+        return page;
     }
 
-    public void setError(boolean error) {
-        this.error = error;
+    public void setPage(int page) {
+        this.page = page;
     }
 
-    public List<ResultsBean> getResults() {
-        return results;
+    public int getPage_count() {
+        return page_count;
     }
 
-    public void setResults(List<ResultsBean> results) {
-        this.results = results;
+    public void setPage_count(int page_count) {
+        this.page_count = page_count;
     }
 
-    public static class ResultsBean {
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getTotal_counts() {
+        return total_counts;
+    }
+
+    public void setTotal_counts(int total_counts) {
+        this.total_counts = total_counts;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
         /**
-         * _id : 5ccdbc219d212239df927a93
-         * createdAt : 2019-05-04T16:21:53.523Z
-         * desc : 2019-05-05
-         * publishedAt : 2019-05-04T16:21:59.733Z
-         * source : web
-         * type : 福利
-         * url : http://ww1.sinaimg.cn/large/0065oQSqly1g2pquqlp0nj30n00yiq8u.jpg
-         * used : true
-         * who : lijinshanmx
+         * _id : 5e959250808d6d2fe6b56eda
+         * author : 鸢媛
+         * category : Girl
+         * createdAt : 2020-05-25 08:00:00
+         * desc : 与其安慰自己平凡可贵，
+         * 不如拼尽全力活得漂亮。 ​ ​​​​
+         * images : ["http://gank.io/images/f4f6d68bf30147e1bdd4ddbc6ad7c2a2"]
+         * likeCounts : 7
+         * publishedAt : 2020-05-25 08:00:00
+         * stars : 1
+         * title : 第96期
+         * type : Girl
+         * url : http://gank.io/images/f4f6d68bf30147e1bdd4ddbc6ad7c2a2
+         * views : 14958
          */
 
         private String _id;
+        private String author;
+        private String category;
         private String createdAt;
         private String desc;
+        private int likeCounts;
         private String publishedAt;
-        private String source;
+        private int stars;
+        private String title;
         private String type;
         private String url;
-        private boolean used;
-        private String who;
+        private int views;
+        private List<String> images;
 
         public String get_id() {
             return _id;
@@ -57,6 +96,22 @@ public class PhotoBean {
 
         public void set_id(String _id) {
             this._id = _id;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
         }
 
         public String getCreatedAt() {
@@ -75,6 +130,14 @@ public class PhotoBean {
             this.desc = desc;
         }
 
+        public int getLikeCounts() {
+            return likeCounts;
+        }
+
+        public void setLikeCounts(int likeCounts) {
+            this.likeCounts = likeCounts;
+        }
+
         public String getPublishedAt() {
             return publishedAt;
         }
@@ -83,12 +146,20 @@ public class PhotoBean {
             this.publishedAt = publishedAt;
         }
 
-        public String getSource() {
-            return source;
+        public int getStars() {
+            return stars;
         }
 
-        public void setSource(String source) {
-            this.source = source;
+        public void setStars(int stars) {
+            this.stars = stars;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public String getType() {
@@ -107,20 +178,20 @@ public class PhotoBean {
             this.url = url;
         }
 
-        public boolean isUsed() {
-            return used;
+        public int getViews() {
+            return views;
         }
 
-        public void setUsed(boolean used) {
-            this.used = used;
+        public void setViews(int views) {
+            this.views = views;
         }
 
-        public String getWho() {
-            return who;
+        public List<String> getImages() {
+            return images;
         }
 
-        public void setWho(String who) {
-            this.who = who;
+        public void setImages(List<String> images) {
+            this.images = images;
         }
     }
 }

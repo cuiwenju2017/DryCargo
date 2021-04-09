@@ -8,6 +8,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface GitHubService {
-    @GET("api/data/福利/{count}/{page}")
-    Call<PhotoBean> dataPhoto(@Path("count") String count, @Path("page") int page);
+
+    String BASE_URL = "https://gank.io/";
+
+    @GET("api/v2/data/category/Girl/type/Girl/page/{page}/count/{count}")
+    Call<PhotoBean> dataPhoto(@Path("count") int count, @Path("page") int page);
 }
