@@ -2,6 +2,7 @@ package com.shanjing.drycargo.activity;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,14 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.jaeger.library.StatusBarUtil;
@@ -21,31 +27,27 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shanjing.drycargo.R;
-import com.shanjing.drycargo.adapter.HomeAdapter;
+import com.shanjing.drycargo.adapter.BaseRVAdapter;
+import com.shanjing.drycargo.adapter.BaseRVHolder;
 import com.shanjing.drycargo.api.GitHubService;
 import com.shanjing.drycargo.api.MyRetrofit;
 import com.shanjing.drycargo.bean.GetDataType;
 import com.shanjing.drycargo.bean.PhotoBean;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.shanjing.drycargo.utils.DensityUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.shanjing.drycargo.api.GitHubService.BASE_URL;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rv;
     private int page = 1;
-    private HomeAdapter homeAdapter;
     private SmartRefreshLayout srl;
     private View cl_view;
     private String realUrl;
+    private BaseRVAdapter<PhotoBean.DataBean> adapter;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,33 +55,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         initData(GetDataType.GETDATA);
-        //设置布局方式,2列，垂直
-        rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        homeAdapter = new HomeAdapter(this, R.layout.item_photo);
 
-        // 默认提供5种方法（渐显ALPHAIN、缩放SCALEIN、从下到上SLIDEIN_BOTTOM，从左到右SLIDEIN_LEFT、从右到左SLIDEIN_RIGHT）
-        //homeAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
-
-        // 自定义动画
-        homeAdapter.openLoadAnimation(new BaseAnimation() {
+        adapter = new BaseRVAdapter<PhotoBean.DataBean>(R.layout.item_photo) {
+            @SuppressLint("SetJavaScriptEnabled")
             @Override
-            public Animator[] getAnimators(View view) {
-                return new Animator[]{
-                        /* ObjectAnimator.ofFloat(view, "scaleY", 1, 1.2f, 1),
-                         ObjectAnimator.ofFloat(view, "scaleX", 1, 1.2f, 1),*/
-                        ObjectAnimator.ofFloat(view, "rotation", 0f, 180f, 360f)
-                };
-            }
-        });
+            public void onBindVH(BaseRVHolder holder, final PhotoBean.DataBean data, int position) {
+                final ImageView iv = holder.getView(R.id.iv);
 
-        rv.setAdapter(homeAdapter);
+                ViewGroup.LayoutParams params = iv.getLayoutParams();
+                if (position % 2 == 0) {
+                    params.height = DensityUtils.dp2px(MainActivity.this, 300);
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    iv.setLayoutParams(params);
+                } else {
+                    params.height = DensityUtils.dp2px(MainActivity.this, 320);
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    iv.setLayoutParams(params);
+                }
 
-        homeAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
-                final PhotoBean.DataBean item = homeAdapter.getItem(position);
-                WebView webView = new WebView(MainActivity.this);
-                webView.loadUrl(item.getUrl());
+                webView = new WebView(MainActivity.this);
+                webView.loadUrl(data.getUrl());
                 webView.getSettings().setJavaScriptEnabled(true);
                 webView.setWebViewClient(new WebViewClient() {
                     //页面加载开始
@@ -93,18 +88,63 @@ public class MainActivity extends AppCompatActivity {
                     public void onPageFinished(WebView view, String url) {
                         super.onPageFinished(view, url);
                         realUrl = url;
+                        //这个realUrl即为重定向之后的地址
+                        Glide.with(MainActivity.this).load(realUrl).asBitmap().fitCenter().placeholder(R.mipmap.ic_launcher).into(iv);
+                    }
+                });
 
-                        Bundle bundle = new Bundle();
-                        bundle.putString("url", realUrl);
-                        bundle.putString("id", item.get_id());
-                        Intent intent = new Intent();
-                        intent.putExtras(bundle);
-                        intent.setClass(MainActivity.this, PhotoActivity.class);
-                        startActivity(intent);
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        webView = new WebView(MainActivity.this);
+                        webView.loadUrl(data.getUrl());
+                        webView.getSettings().setJavaScriptEnabled(true);
+                        webView.setWebViewClient(new WebViewClient() {
+                            //页面加载开始
+                            @Override
+                            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                super.onPageStarted(view, url, favicon);
+                            }
+
+                            //页面加载完成
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                super.onPageFinished(view, url);
+                                realUrl = url;
+                                Bundle bundle = new Bundle();
+                                bundle.putString("url", realUrl);
+                                bundle.putString("id", data.get_id());
+                                Intent intent = new Intent();
+                                intent.putExtras(bundle);
+                                intent.setClass(MainActivity.this, PhotoActivity.class);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
             }
-        });
+        };
+
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        // 绑定布局管理器
+        rv.setLayoutManager(layoutManager);
+
+        // 默认提供5种方法（渐显ALPHAIN、缩放SCALEIN、从下到上SLIDEIN_BOTTOM，从左到右SLIDEIN_LEFT、从右到左SLIDEIN_RIGHT）
+        adapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+
+        // 自定义动画
+        /*adapter.openLoadAnimation(new BaseAnimation() {
+            @Override
+            public Animator[] getAnimators(View view) {
+                return new Animator[]{
+                        ObjectAnimator.ofFloat(view, "scaleY", 1, 1.2f, 1),
+                        ObjectAnimator.ofFloat(view, "scaleX", 1, 1.2f, 1),
+                        ObjectAnimator.ofFloat(view, "rotation", 0f, 180f, 360f)
+                };
+            }
+        });*/
+
+        rv.setAdapter(adapter);
     }
 
     private void initView() {
@@ -150,10 +190,10 @@ public class MainActivity extends AppCompatActivity {
                     switch (type) {
                         case GetDataType.GETDATA:
                         case GetDataType.REFRESH:
-                            homeAdapter.setNewData(response.body().getData());
+                            adapter.setNewData(response.body().getData());
                             break;
                         case GetDataType.LOADMORE:
-                            homeAdapter.addData(response.body().getData());
+                            adapter.addData(response.body().getData());
                             break;
                     }
                 }
