@@ -9,8 +9,8 @@ import retrofit2.http.Query;
 
 public interface GitHubService {
 
-    String BASE_URL = "https://gank.io/";
+    String BASE_URL = "https://api.ixiaowai.cn/";
 
-    @GET("api/v2/data/category/Girl/type/Girl/page/{page}/count/{count}")
-    Call<PhotoBean> dataPhoto(@Path("count") int count, @Path("page") int page);
+    @GET("api/api.php?return=json")
+    Call<PhotoBean> dataPhoto();
 }
