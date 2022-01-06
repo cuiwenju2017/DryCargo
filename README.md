@@ -20,12 +20,10 @@ implementation 'com.android.support:design:28.0.0'
 implementation 'com.github.SheHuan:NiceImageView:1.0.5'
 //RecyclerAdapter框架
 implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-//图片加载库
-implementation 'com.github.bumptech.glide:glide:3.7.0'
+// glide
+implementation 'com.github.bumptech.glide:glide:4.9.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+implementation 'com.github.bumptech.glide:okhttp3-integration:4.9.0'
 //下拉刷新上拉加载更多
 implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
-//photoview图片预览库
-implementation('com.github.chrisbanes.photoview:library:+') {
-    exclude group: 'com.android.support'
-}
 ```
